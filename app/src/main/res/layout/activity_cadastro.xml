@@ -36,31 +36,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputNome" />
 
-    <EditText
-        android:id="@+id/textoTag"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Aproxime a tag RFID no leitor"
-        android:textAlignment="center"
-        android:textColor="#504646"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputId" />
-
     <ImageView
         android:id="@+id/leitorImg"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/textoTag"
-        app:layout_constraintStart_toStartOf="@+id/textoTag"
-        app:layout_constraintTop_toBottomOf="@+id/textoTag"
+        app:layout_constraintBottom_toTopOf="@+id/botaoSalvar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texto_aproximarId"
         app:srcCompat="@drawable/rfid" />
 
     <Button
@@ -68,11 +51,25 @@
         style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#436C71"
         android:text="Salvar"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/leitorImg"
-        app:layout_constraintStart_toStartOf="@+id/leitorImg"
-        app:layout_constraintTop_toBottomOf="@+id/leitorImg" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/texto_aproximarId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Aproxime a tag RFID do leitor"
+        android:textColor="#68000000"
+        android:textColorHint="#E3DFDF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputId" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

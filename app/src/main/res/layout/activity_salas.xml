@@ -27,6 +27,7 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
@@ -44,7 +45,7 @@
             app:srcCompat="@drawable/add_person_icon" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/botaoVerNomesSala"
+            android:id="@+id/botaoVerLog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -53,7 +54,7 @@
             app:backgroundTint="#B3436C71"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/icon_person" />
+            app:srcCompat="@android:drawable/ic_menu_today" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
