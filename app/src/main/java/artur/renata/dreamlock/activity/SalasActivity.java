@@ -1,4 +1,4 @@
-package artur.renata.dreamlock;
+package artur.renata.dreamlock.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import artur.renata.dreamlock.R;
 
 public class SalasActivity extends AppCompatActivity {
 

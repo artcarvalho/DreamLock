@@ -1,8 +1,10 @@
-package artur.renata.dreamlock;
+package artur.renata.dreamlock.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import artur.renata.dreamlock.R;
 
 public class LogActivity extends AppCompatActivity {
 

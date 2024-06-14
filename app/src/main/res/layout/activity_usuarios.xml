@@ -5,7 +5,7 @@
     android:id="@+id/listaPessoasTela"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UsuariosActivity">
+    tools:context=".activity.UsuariosActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaPessoas"

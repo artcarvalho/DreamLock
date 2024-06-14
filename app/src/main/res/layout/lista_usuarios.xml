@@ -41,7 +41,11 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/circulo"
         android:backgroundTint="#000000"
+        android:textColorHighlight="#00FFFFFF"
+        android:textColorHint="#000000"
+        android:textColorLink="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
