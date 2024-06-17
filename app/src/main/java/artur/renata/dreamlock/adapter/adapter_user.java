@@ -3,6 +3,7 @@ package artur.renata.dreamlock.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,11 +33,13 @@ public class adapter_user extends RecyclerView.Adapter{
         LayoutInflater inflater = LayoutInflater.from(usuarios);
         View v = inflater.inflate(R.layout.lista_usuarios,parent,false);
         return new viewHolder_user(v);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        idModel id = ids.get(position);
+        int pos = position;
+        idModel id = ids.get(pos);
         View v = holder.itemView;
 
         TextView nomeView = v.findViewById(R.id.nome_userView);
@@ -44,10 +47,22 @@ public class adapter_user extends RecyclerView.Adapter{
 
         TextView idView = v.findViewById(R.id.id_tagView);
         idView.setText(id.id);
+        Button btn_apagar = v.findViewById(R.id.btn_removeUser);
+        btn_apagar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeAt(pos);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return ids.size();
+    }
+    public void removeAt(int position) {
+        ids.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, ids.size());
     }
 }

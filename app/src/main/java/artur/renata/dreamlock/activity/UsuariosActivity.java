@@ -48,8 +48,9 @@ public class UsuariosActivity extends AppCompatActivity {
         rvItensID.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rvItensID.setLayoutManager(layoutManager);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvItensID.getContext(), DividerItemDecoration.VERTICAL);
-        rvItensID.addItemDecoration(dividerItemDecoration);
+
+        //DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvItensID.getContext(), DividerItemDecoration.VERTICAL);
+        //rvItensID.addItemDecoration(dividerItemDecoration); //isso só decora
 
 
     }

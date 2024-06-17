@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/border"
+    android:padding="0dp">
 
     <TextView
         android:id="@+id/nome_userView"
@@ -12,16 +15,18 @@
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:text="Nome"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32999998" />
 
     <TextView
         android:id="@+id/id_tagView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="xx yy xx yx"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/nome_userView" />
 
@@ -31,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="id: "
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nome_userView" />
 
@@ -42,12 +48,21 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/circulo"
-        android:backgroundTint="#000000"
-        android:textColorHighlight="#00FFFFFF"
-        android:textColorHint="#000000"
-        android:textColorLink="#00FFFFFF"
+        app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_removeUser"
+        app:layout_constraintEnd_toEndOf="@+id/btn_removeUser"
+        app:layout_constraintStart_toStartOf="@+id/btn_removeUser"
+        app:layout_constraintTop_toTopOf="@+id/btn_removeUser"
+        app:srcCompat="@color/white" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
