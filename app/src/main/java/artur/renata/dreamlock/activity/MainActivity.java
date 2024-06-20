@@ -8,10 +8,17 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.Firebase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import artur.renata.dreamlock.R;
 
 public class MainActivity extends AppCompatActivity {
+
+    //banco de dados
+    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
