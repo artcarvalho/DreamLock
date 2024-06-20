@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:208710868639:android:cfffef4552ebedd5754caa",
+        "mobilesdk_app_id": "1:208710868639:android:42757df106f0aac1754caa",
         "android_client_info": {
-          "package_name": "artur.renata.dreamlock.activity"
+          "package_name": "artur.renata.dreamlock"
         }
       },
       "oauth_client": [],

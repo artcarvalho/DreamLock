@@ -27,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
         FloatingActionButton btnUser = (FloatingActionButton) findViewById(R.id.botaoVerIds);
 
+
+        //somente teste para conectar ao banco de dados
+        reference.child("Salas").child("002").child("Nome").setValue("Sala");
+        reference.child("Salas").child("002").child("Acessos").setValue("artur");
+
         btnUser.setOnClickListener(new View.OnClickListener() { //clique para acessar a guida dos usuarios
            @Override
            public void onClick (View v){
