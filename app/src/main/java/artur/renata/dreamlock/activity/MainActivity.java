@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.Firebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -17,7 +16,8 @@ import artur.renata.dreamlock.R;
 public class MainActivity extends AppCompatActivity {
 
     //banco de dados
-    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference banco_de_dados = database.getReference();
 
 
     @Override
@@ -29,8 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         //somente teste para conectar ao banco de dados
-        reference.child("Salas").child("002").child("Nome").setValue("Sala");
-        reference.child("Salas").child("002").child("Acessos").setValue("artur");
+
+
+
+
 
         btnUser.setOnClickListener(new View.OnClickListener() { //clique para acessar a guida dos usuarios
            @Override

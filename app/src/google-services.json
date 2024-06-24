@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "208710868639",
+    "firebase_url": "https://dreamlock-77f80-default-rtdb.firebaseio.com",
+    "project_id": "dreamlock-77f80",
+    "storage_bucket": "dreamlock-77f80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208710868639:android:42757df106f0aac1754caa",
+        "android_client_info": {
+          "package_name": "artur.renata.dreamlock"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoYXb2F-CPG94Z_qSfK4fJ00xmI36utKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

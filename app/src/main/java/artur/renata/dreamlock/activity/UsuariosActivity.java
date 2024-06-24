@@ -9,9 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +31,11 @@ public class UsuariosActivity extends AppCompatActivity {
     static int NEW_ITEM_REQUEST =1;
     List<idModel> ids = new ArrayList<>();
     adapter_user user;
+
+    //connect database
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference banco = database.getReference();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +52,23 @@ public class UsuariosActivity extends AppCompatActivity {
             }
         });
 
+        //testes para ler dados do banco de dados e atualizar nossa base de dados com novos usuariso
+
+        banco.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w( "Failed to read value.", error.toException());
+            }
+        });
+        //fim do teste
+
+
 
         RecyclerView rvItensID = findViewById(R.id.listaPessoas);
         user = new adapter_user(this, ids);
@@ -49,8 +77,7 @@ public class UsuariosActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rvItensID.setLayoutManager(layoutManager);
 
-        //DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvItensID.getContext(), DividerItemDecoration.VERTICAL);
-        //rvItensID.addItemDecoration(dividerItemDecoration); //isso só decora
+
 
 
     }
@@ -63,6 +90,10 @@ public class UsuariosActivity extends AppCompatActivity {
                 idModel id = new idModel();
                 id.nome = data.getStringExtra("nome");
                 id.id = data.getStringExtra("id");
+
+                banco_de_dados.child("Usuarios").child("Nome").setValue(id.nome);
+                banco_de_dados.child("Usuarios").child("Nome").child("ID").setValue(id.id);
+
                 ids.add(id);
                 user.notifyItemInserted(ids.size()-1);
             }
