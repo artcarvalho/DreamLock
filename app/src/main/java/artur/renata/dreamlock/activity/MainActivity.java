@@ -26,14 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FloatingActionButton btnUser = (FloatingActionButton) findViewById(R.id.botaoVerIds);
-
-
-        //somente teste para conectar ao banco de dados
-
-
-
-
-
         btnUser.setOnClickListener(new View.OnClickListener() { //clique para acessar a guida dos usuarios
            @Override
            public void onClick (View v){

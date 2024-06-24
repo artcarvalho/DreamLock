@@ -1,5 +1,6 @@
 package artur.renata.dreamlock.activity;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -11,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -39,8 +41,11 @@ public class UsuariosActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuarios);
+
+        lerDados_user();
 
         FloatingActionButton btnUserAdd = (FloatingActionButton) findViewById(R.id.botaoAddIds);
 
@@ -52,21 +57,6 @@ public class UsuariosActivity extends AppCompatActivity {
             }
         });
 
-        //testes para ler dados do banco de dados e atualizar nossa base de dados com novos usuariso
-
-        banco.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w( "Failed to read value.", error.toException());
-            }
-        });
-        //fim do teste
 
 
 
@@ -91,8 +81,7 @@ public class UsuariosActivity extends AppCompatActivity {
                 id.nome = data.getStringExtra("nome");
                 id.id = data.getStringExtra("id");
 
-                banco_de_dados.child("Usuarios").child("Nome").setValue(id.nome);
-                banco_de_dados.child("Usuarios").child("Nome").child("ID").setValue(id.id);
+                banco.child("Usuarios").child(id.nome).child("ID").setValue(id.id);
 
                 ids.add(id);
                 user.notifyItemInserted(ids.size()-1);
@@ -101,6 +90,28 @@ public class UsuariosActivity extends AppCompatActivity {
 
 
     }
+
+    protected void lerDados_user(){
+
+        DatabaseReference reference = database.getReference().child("Usuarios");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String teste = String.valueOf(snapshot);
+                TextView testeEt = findViewById(R.id.teste);
+                testeEt.setText(teste);
+
+                user.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
 }
 
 
