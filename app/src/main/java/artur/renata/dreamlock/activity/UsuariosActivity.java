@@ -3,14 +3,12 @@ package artur.renata.dreamlock.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -25,14 +23,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import artur.renata.dreamlock.R;
-import artur.renata.dreamlock.adapter.adapter_user;
+import artur.renata.dreamlock.adapter.adapterUser;
 import artur.renata.dreamlock.model.idModel;
 
 public class UsuariosActivity extends AppCompatActivity {
 
     static int NEW_ITEM_REQUEST =1;
     List<idModel> ids = new ArrayList<>();
-    adapter_user user;
+    adapterUser UserList;
 
     //connect database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -45,7 +43,6 @@ public class UsuariosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuarios);
 
-        lerDados_user();
 
         FloatingActionButton btnUserAdd = (FloatingActionButton) findViewById(R.id.botaoAddIds);
 
@@ -57,12 +54,12 @@ public class UsuariosActivity extends AppCompatActivity {
             }
         });
 
-
+        lerDados_user();
 
 
         RecyclerView rvItensID = findViewById(R.id.listaPessoas);
-        user = new adapter_user(this, ids);
-        rvItensID.setAdapter(user);
+        UserList = new adapterUser(this, ids);
+        rvItensID.setAdapter(UserList);
         rvItensID.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rvItensID.setLayoutManager(layoutManager);
@@ -84,7 +81,7 @@ public class UsuariosActivity extends AppCompatActivity {
                 banco.child("Usuarios").child(id.nome).child("ID").setValue(id.id);
 
                 ids.add(id);
-                user.notifyItemInserted(ids.size()-1);
+                UserList.notifyItemInserted(ids.size()-1);
             }
         }
 
@@ -97,11 +94,17 @@ public class UsuariosActivity extends AppCompatActivity {
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String teste = String.valueOf(snapshot);
-                TextView testeEt = findViewById(R.id.teste);
-                testeEt.setText(teste);
 
-                user.notifyDataSetChanged();
+                for (DataSnapshot childDataSnapshot : snapshot.getChildren()){
+                    //testeEt.setText(childDataSnapshot.getKey());
+                    idModel id = new idModel();
+                    id.nome = childDataSnapshot.getKey();
+                    id.id = childDataSnapshot.child("ID").getValue().toString();
+                    ids.add(id);
+                }
+                UserList.notifyDataSetChanged();
+
+
             }
 
             @Override

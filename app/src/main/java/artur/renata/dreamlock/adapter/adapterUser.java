@@ -9,18 +9,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 
 import artur.renata.dreamlock.R;
 import artur.renata.dreamlock.activity.UsuariosActivity;
 import artur.renata.dreamlock.model.idModel;
 
-public class adapter_user extends RecyclerView.Adapter{
+public class adapterUser extends RecyclerView.Adapter{
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference banco = database.getReference();
 
     UsuariosActivity usuarios;
     List<idModel> ids;
 
-    public adapter_user(UsuariosActivity usuarios, List<idModel> ids){
+    public adapterUser(UsuariosActivity usuarios, List<idModel> ids){
         this.usuarios = usuarios;
         this.ids = ids;
 
