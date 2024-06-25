@@ -5,14 +5,14 @@
     android:id="@+id/salasTela"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#436C71"
+    android:background="@drawable/corner_sala"
     tools:context=".activity.SalasActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/grupoDois"
         android:layout_width="0dp"
         android:layout_height="610dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/round_corner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -22,7 +22,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -19,16 +19,15 @@ import artur.renata.dreamlock.activity.SalasActivity;
 import artur.renata.dreamlock.activity.UsuariosActivity;
 import artur.renata.dreamlock.model.idModel;
 
-public class adapterUser extends RecyclerView.Adapter{
-
+public class AdapterAcesso extends RecyclerView.Adapter {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference banco = database.getReference();
 
-    UsuariosActivity usuarios;
+    SalasActivity sala;
     List<idModel> ids;
 
-    public adapterUser(UsuariosActivity usuarios, List<idModel> ids){
-        this.usuarios = usuarios;
+    public AdapterAcesso(SalasActivity sala, List<idModel> ids){
+        this.sala = sala;
         this.ids = ids;
 
     }
@@ -37,7 +36,7 @@ public class adapterUser extends RecyclerView.Adapter{
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(usuarios);
+        LayoutInflater inflater = LayoutInflater.from(sala);
         View v = inflater.inflate(R.layout.lista_usuarios,parent,false);
         return new viewHolder_user(v);
 
@@ -58,7 +57,8 @@ public class adapterUser extends RecyclerView.Adapter{
         btn_apagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                removeAt(pos);
+                DatabaseReference Delref = database.getReference().child("Salas").child("sala1").child("Acesso").child("Artur");
+                Delref.removeValue();
             }
         });
     }
@@ -67,9 +67,5 @@ public class adapterUser extends RecyclerView.Adapter{
     public int getItemCount() {
         return ids.size();
     }
-    public void removeAt(int position) {
-        ids.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, ids.size());
-    }
+
 }

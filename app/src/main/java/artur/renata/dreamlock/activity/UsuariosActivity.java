@@ -77,6 +77,8 @@ public class UsuariosActivity extends AppCompatActivity {
                 idModel id = new idModel();
                 id.nome = data.getStringExtra("nome");
                 id.id = data.getStringExtra("id");
+                id.sala = null;
+
 
                 banco.child("Usuarios").child(id.nome).child("ID").setValue(id.id);
 
