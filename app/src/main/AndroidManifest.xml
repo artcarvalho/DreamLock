@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-feature android:name="android.hardware.nfc" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -18,9 +21,6 @@
         <activity
             android:name=".activity.SalasActivity"
             android:exported="true" />
-        <activity
-            android:name=".activity.TransicaoActivity"
-            android:exported="false" />
         <activity
             android:name=".activity.CadastroActivity"
             android:exported="false" />

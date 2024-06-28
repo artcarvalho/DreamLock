@@ -27,6 +27,7 @@
             android:background="@drawable/shape"
             android:hint="Pesquisar"
             android:shadowRadius="20"
+            android:textColorHint="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

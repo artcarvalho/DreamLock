@@ -1,10 +1,12 @@
 package artur.renata.dreamlock.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,15 +24,11 @@ import java.util.List;
 
 import artur.renata.dreamlock.R;
 import artur.renata.dreamlock.adapter.AdapterAcesso;
-import artur.renata.dreamlock.adapter.AdapterSalas;
-import artur.renata.dreamlock.adapter.adapterUser;
 import artur.renata.dreamlock.model.idModel;
 
 public class SalasActivity extends AppCompatActivity {
 
-
-    List<idModel> ids = new ArrayList<>();
-    AdapterAcesso Acesso;
+    AdapterAcesso acesso;
 
     String Sala;
     //connect database
@@ -46,21 +44,17 @@ public class SalasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salas);
 
+
         Bundle extras = getIntent().getExtras();
 
         TextView nomeSala = findViewById(R.id.salaNumero);
         nomeSala.setText(extras.getString("nome"));
 
         Sala = extras.getString("nome");
+
         lerDadosAcesso(Sala);
 
 
-        RecyclerView rvItensID = findViewById(R.id.listaNomes);
-        Acesso = new AdapterAcesso(this, ids);
-        rvItensID.setAdapter(Acesso);
-        rvItensID.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        rvItensID.setLayoutManager(layoutManager);
 
         FloatingActionButton btnAddUser = (FloatingActionButton) findViewById(R.id.botaoAddNome);
         btnAddUser.setOnClickListener(new View.OnClickListener() {
@@ -76,9 +70,11 @@ public class SalasActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SalasActivity.this, LogActivity.class);
+                i.putExtra("sala", "sala1");
                 startActivity(i);
             }
         });
+
 
 
     }
@@ -90,18 +86,23 @@ public class SalasActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                List<idModel> ids = new ArrayList<>();
+
                 for (DataSnapshot childDataSnapshot : snapshot.getChildren()){
-
-
                     idModel id = new idModel();
                     id.nome = childDataSnapshot.getKey();
                     id.id = childDataSnapshot.getValue().toString();
-                    id.sala = salaN;
+                    id.sala = salaN.toLowerCase();
                     ids.add(id);
+
                 }
-                Acesso.notifyDataSetChanged();
 
-
+                RecyclerView rvItensID = findViewById(R.id.listaNomes);
+                acesso = new AdapterAcesso(SalasActivity.this, ids);
+                rvItensID.setAdapter(acesso);
+                rvItensID.setHasFixedSize(true);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SalasActivity.this);
+                rvItensID.setLayoutManager(layoutManager);
             }
 
             @Override
@@ -110,5 +111,15 @@ public class SalasActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == NEW_ITEM_REQUEST) {
+            if(resultCode == Activity.RESULT_OK) {
+               lerDadosAcesso(Sala);
+            }
+        }
     }
 }

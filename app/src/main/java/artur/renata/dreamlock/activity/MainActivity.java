@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         salasList.add(sala3);
 
 
+
         RecyclerView rvItens = findViewById(R.id.listaSalas);
         salasA = new AdapterSalas(this, salasList);
         rvItens.setAdapter(salasA);

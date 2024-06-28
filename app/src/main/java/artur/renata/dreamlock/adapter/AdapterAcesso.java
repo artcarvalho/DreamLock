@@ -1,5 +1,6 @@
 package artur.renata.dreamlock.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,8 +58,13 @@ public class AdapterAcesso extends RecyclerView.Adapter {
         btn_apagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseReference Delref = database.getReference().child("Salas").child("sala1").child("Acesso").child("Artur");
-                Delref.removeValue();
+                DatabaseReference del = database.getReference().child("Salas").child(id.sala).child("Acessos").child(id.nome);
+                del.removeValue();
+
+                ids.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, ids.size());
+
             }
         });
     }
