@@ -1,8 +1,5 @@
 package artur.renata.dreamlock.adapter;
 
-import static android.content.Intent.getIntent;
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,31 +10,29 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ComponentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
-import java.util.ResourceBundle;
 
 import artur.renata.dreamlock.R;
-import artur.renata.dreamlock.activity.SalasActivity;
 import artur.renata.dreamlock.activity.UsuariosActivity;
 import artur.renata.dreamlock.model.idModel;
 
-public class adapterUser extends RecyclerView.Adapter{
+public class AdapterUser extends RecyclerView.Adapter{
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference banco = database.getReference();
 
-    UsuariosActivity usuarios;
+    UsuariosActivity usuariosActivity;
 
     List<idModel> ids;
 
-    public adapterUser(UsuariosActivity usuarios, List<idModel> ids){
-        this.usuarios = usuarios;
+    String sala;
+    public AdapterUser(UsuariosActivity usuariosActivity, List<idModel> ids){
+        this.usuariosActivity = usuariosActivity;
         this.ids = ids;
 
     }
@@ -46,9 +41,9 @@ public class adapterUser extends RecyclerView.Adapter{
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(usuarios);
+        LayoutInflater inflater = LayoutInflater.from(usuariosActivity);
         View v = inflater.inflate(R.layout.lista_usuarios,parent,false);
-        return new viewHolder_user(v);
+        return new ViewHolder_user(v);
 
     }
 
@@ -68,12 +63,14 @@ public class adapterUser extends RecyclerView.Adapter{
         btn_add.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                Bundle extras = usuariosActivity.getIntent().getExtras();
+                sala = extras.getString("sala").toLowerCase();
 
-                DatabaseReference add = database.getReference().child("Salas").child("sala1").child("Acessos").child(id.nome);
+                DatabaseReference add = database.getReference().child("Salas").child(sala).child("Acessos").child(id.nome);
                 add.setValue(id.id);
 
-                usuarios.setResult(Activity.RESULT_OK);
-                usuarios.finish();
+                usuariosActivity.setResult(Activity.RESULT_OK);
+                usuariosActivity.finish();
             }
         });
 
@@ -94,6 +91,7 @@ public class adapterUser extends RecyclerView.Adapter{
     public void removeAt(int position) {
         idModel id = ids.get(position);
         DatabaseReference del = database.getReference().child("Usuarios").child(id.nome);
+        //futuramente excluir usuario de todas as salas e dar um jeito de atualizar a lista pra redesenhar
         del.removeValue();
 
     }

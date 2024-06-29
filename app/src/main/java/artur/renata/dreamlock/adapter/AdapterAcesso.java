@@ -1,6 +1,5 @@
 package artur.renata.dreamlock.adapter;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import java.util.List;
 
 import artur.renata.dreamlock.R;
 import artur.renata.dreamlock.activity.SalasActivity;
-import artur.renata.dreamlock.activity.UsuariosActivity;
 import artur.renata.dreamlock.model.idModel;
 
 public class AdapterAcesso extends RecyclerView.Adapter {
@@ -39,7 +37,7 @@ public class AdapterAcesso extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(sala);
         View v = inflater.inflate(R.layout.lista_usuarios,parent,false);
-        return new viewHolder_user(v);
+        return new ViewHolder_user(v);
 
     }
 

@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -23,14 +22,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import artur.renata.dreamlock.R;
-import artur.renata.dreamlock.adapter.adapterUser;
+import artur.renata.dreamlock.adapter.AdapterUser;
 import artur.renata.dreamlock.model.idModel;
 
 public class UsuariosActivity extends AppCompatActivity {
 
-    static int NEW_ITEM_REQUEST =1;
+    static int NEW_USER_REQUEST =1;
     List<idModel> ids = new ArrayList<>();
-    adapterUser UserList;
+    AdapterUser userList;
 
     //connect database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -50,7 +49,7 @@ public class UsuariosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(UsuariosActivity.this, CadastroActivity.class);
-                startActivityForResult(i, NEW_ITEM_REQUEST);
+                startActivityForResult(i, NEW_USER_REQUEST);
             }
         });
 
@@ -58,8 +57,8 @@ public class UsuariosActivity extends AppCompatActivity {
 
 
         RecyclerView rvItensID = findViewById(R.id.listaPessoas);
-        UserList = new adapterUser(this, ids);
-        rvItensID.setAdapter(UserList);
+        userList = new AdapterUser(this, ids);
+        rvItensID.setAdapter(userList);
         rvItensID.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rvItensID.setLayoutManager(layoutManager);
@@ -72,7 +71,7 @@ public class UsuariosActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == NEW_ITEM_REQUEST){
+        if(requestCode == NEW_USER_REQUEST){
             if(resultCode == Activity.RESULT_OK){
                 idModel id = new idModel();
                 id.nome = data.getStringExtra("nome");
@@ -83,7 +82,7 @@ public class UsuariosActivity extends AppCompatActivity {
                 banco.child("Usuarios").child(id.nome).child("ID").setValue(id.id);
 
                 ids.add(id);
-                UserList.notifyItemInserted(ids.size()-1);
+                userList.notifyItemInserted(ids.size()-1);
             }
         }
 
@@ -104,7 +103,7 @@ public class UsuariosActivity extends AppCompatActivity {
                     id.id = childDataSnapshot.child("ID").getValue().toString();
                     ids.add(id);
                 }
-                UserList.notifyDataSetChanged();
+                userList.notifyDataSetChanged();
 
 
             }

@@ -5,8 +5,8 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class viewHolderSala extends RecyclerView.ViewHolder {
-    public viewHolderSala(@NonNull View itemView){
+public class ViewHolder_user extends RecyclerView.ViewHolder {
+    public ViewHolder_user(@NonNull View itemView){
         super(itemView);
     }
 }

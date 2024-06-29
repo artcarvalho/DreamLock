@@ -1,9 +1,14 @@
 package artur.renata.dreamlock.activity;
 
+import static android.nfc.NfcAdapter.FLAG_READER_NFC_A;
+import static androidx.core.content.IntentCompat.getParcelableExtra;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.nfc.NfcAdapter;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +26,20 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
+        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+
+        NfcAdapter.ReaderCallback callBack = new NfcAdapter.ReaderCallback() {
+            @Override
+            public void onTagDiscovered(Tag tag) {
+                EditText idView = findViewById(R.id.idText);
+                idView.setText(getHex(tag.getId()));
+            }
+        };
+        
+        nfcAdapter.enableReaderMode(this, callBack, FLAG_READER_NFC_A, null);
+
+
+
         Button btnSalvar = findViewById(R.id.botaoSalvar);
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +56,7 @@ public class CadastroActivity extends AppCompatActivity {
                 }
 
                 //pegando ID
-                TextInputEditText etID = findViewById(R.id.inputId);
+                EditText etID = findViewById(R.id.idText);
                 String id = etID.getText().toString();
                 //caso nao tenha colocado nome
                 if(id.isEmpty()){
@@ -57,5 +76,18 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
 
+    private String getHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = bytes.length - 1; i >= 0; --i) {
+            int b = bytes[i] & 0xff;
+            if (b < 0x10)
+                sb.append('0');
+            sb.append(Integer.toHexString(b));
+            if (i > 0) {
+                sb.append(" ");
+            }
+        }
+        return sb.toString().toUpperCase();
 
+    }
 }

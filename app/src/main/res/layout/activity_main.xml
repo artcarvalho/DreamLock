@@ -11,38 +11,45 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/grupoUm"
         android:layout_width="0dp"
-        android:layout_height="600dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="110dp"
         android:background="@drawable/round_corner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/barraPesquisa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="264dp"
+            android:layout_height="29dp"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="36dp"
             android:layout_marginEnd="100dp"
             android:background="@drawable/shape"
             android:hint="Pesquisar"
             android:shadowRadius="20"
             android:textColorHint="#000000"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/listaSalas"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.509"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
 
         <ImageButton
             android:id="@+id/botaoPesquisa"
             android:layout_width="25dp"
             android:layout_height="25dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="50dp"
             android:background="#FFFFFF"
             android:tint="#000000"
             app:layout_constraintBottom_toTopOf="@+id/listaSalas"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/barraPesquisa"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_search" />
@@ -61,23 +68,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/barraPesquisa" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/botaoVerIds"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:clickable="true"
-            android:foregroundTint="#000000"
-            android:src="@drawable/icon_person"
-            android:tint="#000000"
-            android:tintMode="add"
-            app:backgroundTint="#B3436C71"
-            app:backgroundTintMode="src_in"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:srcCompat="?android:attr/listDivider" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -87,7 +77,7 @@
         android:fontFamily="@font/monofett"
         android:text="Dream Lock"
         android:textAlignment="center"
-        android:textColor="#43FFFFFF"
+        android:textColor="#7CFFFFFF"
         android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/grupoUm"
         app:layout_constraintEnd_toEndOf="parent"

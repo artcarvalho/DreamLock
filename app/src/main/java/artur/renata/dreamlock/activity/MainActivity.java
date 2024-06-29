@@ -4,22 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import artur.renata.dreamlock.R;
 import artur.renata.dreamlock.adapter.AdapterSalas;
-import artur.renata.dreamlock.adapter.adapterUser;
-import artur.renata.dreamlock.model.idModel;
 import artur.renata.dreamlock.model.salaModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,17 +44,6 @@ public class MainActivity extends AppCompatActivity {
         rvItens.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rvItens.setLayoutManager(layoutManager);
-
-        FloatingActionButton btnUser = (FloatingActionButton) findViewById(R.id.botaoVerIds);
-        btnUser.setOnClickListener(new View.OnClickListener() { //clique para acessar a guida dos usuarios
-           @Override
-           public void onClick (View v){
-               Intent i = new Intent(MainActivity.this, UsuariosActivity.class);
-               startActivity(i);
-           }
-        });
-
-
 
         ImageButton btnSearch = (ImageButton) findViewById(R.id.botaoPesquisa);
         btnSearch.setOnClickListener(new View.OnClickListener(){ //iniciar procura pelas salas através do input colocado na barra de pesquisa

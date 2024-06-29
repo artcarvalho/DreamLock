@@ -11,18 +11,20 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/grupoDois"
         android:layout_width="0dp"
-        android:layout_height="610dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="110dp"
         android:background="@drawable/round_corner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listaNomes"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -39,7 +41,8 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:clickable="true"
-            app:backgroundTint="#B3436C71"
+            app:backgroundTint="#436C71"
+            app:elevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/add_person_icon" />
@@ -51,7 +54,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
             android:clickable="true"
-            app:backgroundTint="#B3436C71"
+            android:rotation="0"
+            android:rotationX="0"
+            android:rotationY="0"
+            app:backgroundTint="#436C71"
+            app:elevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@android:drawable/ic_menu_today" />

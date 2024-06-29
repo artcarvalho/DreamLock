@@ -33,7 +33,7 @@ public class AdapterSalas extends RecyclerView.Adapter{
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mainActivity);
         View v = inflater.inflate(R.layout.listas_stylesala,parent,false);
-        return new viewHolder_user(v);
+        return new ViewHolder_user(v);
 
     }
 

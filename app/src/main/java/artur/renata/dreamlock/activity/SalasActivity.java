@@ -30,11 +30,11 @@ public class SalasActivity extends AppCompatActivity {
 
     AdapterAcesso acesso;
 
-    String Sala;
+    String sala;
     //connect database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference banco = database.getReference();
-    static int NEW_ITEM_REQUEST = 2;
+    static int NEW_USER_REQUEST = 2;
 
 
 
@@ -50,9 +50,9 @@ public class SalasActivity extends AppCompatActivity {
         TextView nomeSala = findViewById(R.id.salaNumero);
         nomeSala.setText(extras.getString("nome"));
 
-        Sala = extras.getString("nome");
+        sala = extras.getString("nome");
 
-        lerDadosAcesso(Sala);
+        lerDadosAcesso(sala);
 
 
 
@@ -61,7 +61,8 @@ public class SalasActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SalasActivity.this, UsuariosActivity.class);
-                startActivityForResult(i, NEW_ITEM_REQUEST);
+                i.putExtra("sala", sala);
+                startActivityForResult(i, NEW_USER_REQUEST);
             }
         });
 
@@ -70,7 +71,7 @@ public class SalasActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SalasActivity.this, LogActivity.class);
-                i.putExtra("sala", "sala1");
+                i.putExtra("sala", sala);
                 startActivity(i);
             }
         });
@@ -116,9 +117,9 @@ public class SalasActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == NEW_ITEM_REQUEST) {
+        if(requestCode == NEW_USER_REQUEST) {
             if(resultCode == Activity.RESULT_OK) {
-               lerDadosAcesso(Sala);
+               lerDadosAcesso(sala);
             }
         }
     }
