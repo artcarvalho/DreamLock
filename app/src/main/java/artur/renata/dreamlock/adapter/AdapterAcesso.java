@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,6 +50,9 @@ public class AdapterAcesso extends RecyclerView.Adapter {
 
         TextView nomeView = v.findViewById(R.id.nome_userView);
         nomeView.setText(id.nome);
+
+        ImageButton btn_add = (ImageButton) v.findViewById(R.id.btn_add);
+        btn_add.setVisibility(View.INVISIBLE);
 
         TextView idView = v.findViewById(R.id.id_tagView);
         idView.setText(id.id);

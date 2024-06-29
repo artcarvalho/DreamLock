@@ -55,17 +55,12 @@ public class UsuariosActivity extends AppCompatActivity {
 
         lerDados_user();
 
-
         RecyclerView rvItensID = findViewById(R.id.listaPessoas);
-        userList = new AdapterUser(this, ids);
+        userList = new AdapterUser(UsuariosActivity.this, ids);
         rvItensID.setAdapter(userList);
         rvItensID.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(UsuariosActivity.this);
         rvItensID.setLayoutManager(layoutManager);
-
-
-
-
     }
 
     @Override
@@ -104,7 +99,6 @@ public class UsuariosActivity extends AppCompatActivity {
                     ids.add(id);
                 }
                 userList.notifyDataSetChanged();
-
 
             }
 

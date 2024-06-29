@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -46,9 +47,9 @@ public class AdapterSalas extends RecyclerView.Adapter{
         TextView NomeSalaView = v.findViewById(R.id.nomeSala);
         NomeSalaView.setText(sala.nome);
 
-        Button btn_entrar = v.findViewById(R.id.button_entry);
+        ConstraintLayout constraintLayoutSala = v.findViewById(R.id.constraintLayoutSala);
 
-        btn_entrar.setOnClickListener(new View.OnClickListener() {
+        constraintLayoutSala.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(mainActivity, SalasActivity.class);

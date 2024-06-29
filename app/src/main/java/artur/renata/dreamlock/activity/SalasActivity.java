@@ -118,9 +118,7 @@ public class SalasActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == NEW_USER_REQUEST) {
-            if(resultCode == Activity.RESULT_OK) {
-               lerDadosAcesso(sala);
-            }
+            lerDadosAcesso(sala);
         }
     }
 }
