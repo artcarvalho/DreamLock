@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.Looper;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -17,6 +18,7 @@ import artur.renata.dreamlock.model.salaModel;
 
 public class MainActivity extends AppCompatActivity {
 
+
     List<salaModel> salasList = new ArrayList<>();
     AdapterSalas salasA;
     salaModel sala1 = new salaModel();
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         sala1.nome = "Sala1";
         sala2.nome = "Sala2";

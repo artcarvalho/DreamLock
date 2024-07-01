@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.NFC" />
-    <uses-feature android:name="android.hardware.nfc" android:required="true"/>
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamLock"
         tools:targetApi="31">
+        <activity
+            android:name=".activity.TransicaoActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.LogActivity"
             android:exported="false" />
