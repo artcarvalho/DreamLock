@@ -10,7 +10,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,13 +17,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.snapshot.ChildKey;
 
 import java.util.List;
 
 import artur.renata.dreamlock.R;
 import artur.renata.dreamlock.activity.UsuariosActivity;
-import artur.renata.dreamlock.model.idModel;
+import artur.renata.dreamlock.model.IdModel;
 
 public class AdapterUser extends RecyclerView.Adapter{
 
@@ -33,10 +31,10 @@ public class AdapterUser extends RecyclerView.Adapter{
 
     UsuariosActivity usuariosActivity;
 
-    List<idModel> ids;
+    List<IdModel> ids;
 
     String sala;
-    public AdapterUser(UsuariosActivity usuariosActivity, List<idModel> ids){
+    public AdapterUser(UsuariosActivity usuariosActivity, List<IdModel> ids){
         this.usuariosActivity = usuariosActivity;
         this.ids = ids;
 
@@ -55,7 +53,7 @@ public class AdapterUser extends RecyclerView.Adapter{
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         int pos = position;
-        idModel id = ids.get(pos);
+        IdModel id = ids.get(pos);
         View v = holder.itemView;
 
         Button btn_apagar = v.findViewById(R.id.btn_removeUser);
@@ -94,7 +92,7 @@ public class AdapterUser extends RecyclerView.Adapter{
         return ids.size();
     }
     public void removeAt(int position) {
-        idModel id = ids.get(position);
+        IdModel id = ids.get(position);
         DatabaseReference delLocalUser = database.getReference().child("Usuarios").child(id.nome);
 
         delLocalUser.removeValue();

@@ -17,16 +17,16 @@ import java.util.List;
 
 import artur.renata.dreamlock.R;
 import artur.renata.dreamlock.activity.SalasActivity;
-import artur.renata.dreamlock.model.idModel;
+import artur.renata.dreamlock.model.IdModel;
 
 public class AdapterAcesso extends RecyclerView.Adapter {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference banco = database.getReference();
 
     SalasActivity sala;
-    List<idModel> ids;
+    List<IdModel> ids;
 
-    public AdapterAcesso(SalasActivity sala, List<idModel> ids){
+    public AdapterAcesso(SalasActivity sala, List<IdModel> ids){
         this.sala = sala;
         this.ids = ids;
 
@@ -45,7 +45,7 @@ public class AdapterAcesso extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         int pos = position;
-        idModel id = ids.get(pos);
+        IdModel id = ids.get(pos);
         View v = holder.itemView;
 
         TextView nomeView = v.findViewById(R.id.nome_userView);

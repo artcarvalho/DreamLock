@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +23,7 @@ import java.util.List;
 
 import artur.renata.dreamlock.R;
 import artur.renata.dreamlock.adapter.AdapterAcesso;
-import artur.renata.dreamlock.model.idModel;
+import artur.renata.dreamlock.model.IdModel;
 
 public class SalasActivity extends AppCompatActivity {
 
@@ -87,10 +86,10 @@ public class SalasActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                List<idModel> ids = new ArrayList<>();
+                List<IdModel> ids = new ArrayList<>();
 
                 for (DataSnapshot childDataSnapshot : snapshot.getChildren()){
-                    idModel id = new idModel();
+                    IdModel id = new IdModel();
                     id.nome = childDataSnapshot.getKey();
                     id.id = childDataSnapshot.getValue().toString();
                     id.sala = salaN.toLowerCase();

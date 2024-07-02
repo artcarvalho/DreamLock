@@ -1,5 +1,5 @@
 package artur.renata.dreamlock.model;
 
-public class salaModel {
+public class SalaModel {
     public String nome;
 }

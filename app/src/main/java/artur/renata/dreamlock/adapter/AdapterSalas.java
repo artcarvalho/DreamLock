@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,15 +15,15 @@ import java.util.List;
 import artur.renata.dreamlock.R;
 import artur.renata.dreamlock.activity.MainActivity;
 import artur.renata.dreamlock.activity.SalasActivity;
-import artur.renata.dreamlock.model.salaModel;
+import artur.renata.dreamlock.model.SalaModel;
 
 public class AdapterSalas extends RecyclerView.Adapter{
 
     MainActivity mainActivity;
-    List<salaModel> salas;
+    List<SalaModel> salas;
 
 
-    public AdapterSalas(MainActivity mainActivity, List<salaModel> salas){
+    public AdapterSalas(MainActivity mainActivity, List<SalaModel> salas){
         this.mainActivity = mainActivity;
         this.salas = salas;
 
@@ -41,7 +40,7 @@ public class AdapterSalas extends RecyclerView.Adapter{
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         int pos = position;
-        salaModel sala = salas.get(pos);
+        SalaModel sala = salas.get(pos);
         View v = holder.itemView;
 
         TextView NomeSalaView = v.findViewById(R.id.nomeSala);

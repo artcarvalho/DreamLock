@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.os.Looper;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -14,16 +13,16 @@ import java.util.List;
 
 import artur.renata.dreamlock.R;
 import artur.renata.dreamlock.adapter.AdapterSalas;
-import artur.renata.dreamlock.model.salaModel;
+import artur.renata.dreamlock.model.SalaModel;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    List<salaModel> salasList = new ArrayList<>();
+    List<SalaModel> salasList = new ArrayList<>();
     AdapterSalas salasA;
-    salaModel sala1 = new salaModel();
-    salaModel sala2 = new salaModel();
-    salaModel sala3 = new salaModel();
+    SalaModel sala1 = new SalaModel();
+    SalaModel sala2 = new SalaModel();
+    SalaModel sala3 = new SalaModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -23,12 +23,12 @@ import java.util.List;
 
 import artur.renata.dreamlock.R;
 import artur.renata.dreamlock.adapter.AdapterUser;
-import artur.renata.dreamlock.model.idModel;
+import artur.renata.dreamlock.model.IdModel;
 
 public class UsuariosActivity extends AppCompatActivity {
 
     static int NEW_USER_REQUEST =1;
-    List<idModel> ids = new ArrayList<>();
+    List<IdModel> ids = new ArrayList<>();
     AdapterUser userList;
 
     //connect database
@@ -68,7 +68,7 @@ public class UsuariosActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == NEW_USER_REQUEST){
             if(resultCode == Activity.RESULT_OK){
-                idModel id = new idModel();
+                IdModel id = new IdModel();
                 id.nome = data.getStringExtra("nome");
                 id.id = data.getStringExtra("id");
                 id.sala = null;
@@ -93,7 +93,7 @@ public class UsuariosActivity extends AppCompatActivity {
 
                 for (DataSnapshot childDataSnapshot : snapshot.getChildren()){
                     //testeEt.setText(childDataSnapshot.getKey());
-                    idModel id = new idModel();
+                    IdModel id = new IdModel();
                     id.nome = childDataSnapshot.getKey();
                     id.id = childDataSnapshot.child("ID").getValue().toString();
                     ids.add(id);
